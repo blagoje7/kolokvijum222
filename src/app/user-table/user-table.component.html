@@ -1,0 +1,39 @@
+<button (click)="bulkDelete()">Ukloni sve odabrane</button>
+<div cdkDropListGroup>
+    <table cdkDropList [cdkDropListData]="users" (cdkDropListDropped)="drop($event)">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users" appHighlight color="green" [appRowSelection]="user"
+                (onSelectionChange)="handleSelection($event)" cdkDrag>
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h1>Banned users</h1>
+    <table cdkDropList [cdkDropListData]="bannedUsers" (cdkDropListDropped)="drop($event)">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of bannedUsers" appHighlight color="green" [appRowSelection]="user"
+                (onSelectionChange)="handleSelection($event)" cdkDrag>
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
